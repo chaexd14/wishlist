@@ -1,0 +1,95 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-22T00:46:31.5067151+08:00",
+  "title": "Design System: Birthday Wishlist Journal",
+  "extensions": {
+    "colorMeta": {
+      "espresso": { "role": "primary", "displayName": "Espresso Ink", "canonical": "#4a3026", "tonalRamp": ["#271713", "#4a3026", "#68493d", "#866659", "#a78a7d", "#c9b2a7", "#e8dad3", "#f8f1ed"] },
+      "cocoa": { "role": "neutral", "displayName": "Cocoa Copy", "canonical": "#34221c", "tonalRamp": ["#211411", "#34221c", "#594138", "#7b6257", "#9e8479", "#c0aaa0", "#e3d5cf", "#f7f0ed"] },
+      "kraft": { "role": "primary", "displayName": "Kraft Field", "canonical": "#b8895e", "tonalRamp": ["#392516", "#5b3d27", "#7b5739", "#9b704c", "#b8895e", "#d0a982", "#e5cbb0", "#f5eadc"] },
+      "cream": { "role": "neutral", "displayName": "Warm Cream", "canonical": "#fff8e8", "tonalRamp": ["#3c3425", "#655b47", "#8d816b", "#b3a68e", "#d5c9ae", "#eadfc6", "#f7eed9", "#fff8e8"] },
+      "paper": { "role": "neutral", "displayName": "Kraft Paper", "canonical": "#f3e1be", "tonalRamp": ["#382d1e", "#5e4d34", "#816d4c", "#a58e66", "#c7ae83", "#deca9f", "#eddbb7", "#f8efd9"] },
+      "sheet": { "role": "neutral", "displayName": "Quiet Sheet", "canonical": "#fffaf0", "tonalRamp": ["#3b352a", "#645d4f", "#8d8575", "#b5ad9c", "#d5cebd", "#eae3d3", "#f8f2e5", "#fffaf0"] },
+      "dusty-rose": { "role": "secondary", "displayName": "Dusty Rose", "canonical": "#d58b8b", "tonalRamp": ["#3e2021", "#643738", "#895153", "#ad6c6e", "#d58b8b", "#e3abab", "#efcecd", "#faeeee"] },
+      "garden-sage": { "role": "secondary", "displayName": "Garden Sage", "canonical": "#91a17a", "tonalRamp": ["#242b1c", "#3f4a31", "#5c6949", "#768765", "#91a17a", "#b1bd9e", "#d2dac5", "#eef2e9"] },
+      "honey": { "role": "secondary", "displayName": "Honey Print", "canonical": "#d5a942", "tonalRamp": ["#3c2b0b", "#624714", "#87641e", "#ab832b", "#d5a942", "#e2c06e", "#eed9a2", "#faf0d5"] },
+      "terracotta": { "role": "tertiary", "displayName": "Terracotta Mark", "canonical": "#b85c45", "tonalRamp": ["#391910", "#602b20", "#853e2f", "#a84e3b", "#b85c45", "#d18470", "#e4b3a5", "#f5e2dc"] },
+      "soft-ink": { "role": "neutral", "displayName": "Soft Ink", "canonical": "#68493d", "tonalRamp": ["#291a15", "#493128", "#68493d", "#87685b", "#a78a7e", "#c7aea4", "#e4d5cf", "#f6efec"] },
+      "focus-oxblood": { "role": "tertiary", "displayName": "Focus Oxblood", "canonical": "#742f37", "tonalRamp": ["#2d1014", "#511d25", "#742f37", "#944a51", "#b36a6e", "#d09597", "#e8c4c4", "#f8e9e9"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Journal Display", "purpose": "Short page-level statements and the opening journal title." },
+      "section": { "displayName": "Section Lettering", "purpose": "Major working-group headings with the scribbled underline treatment." },
+      "body": { "displayName": "Handwritten Body", "purpose": "Instructions, labels, hints, and control text throughout the product." }
+    },
+    "shadows": [
+      { "name": "sticker-soft", "value": "3px 4px 0 rgb(70 42 28 / 20%)", "purpose": "Default shallow lift for small paper controls." },
+      { "name": "paper-raised", "value": "5px 7px 0 rgb(70 42 28 / 20%)", "purpose": "Structural lift for sheets and larger paper objects." },
+      { "name": "sticker-pressed", "value": "1px 2px 0 rgb(70 42 28 / 20%)", "purpose": "Compressed active state for tactile controls." }
+    ],
+    "motion": [
+      { "name": "spring", "value": "500ms cubic-bezier(.28, 1.75, .5, 1)", "purpose": "Sticker lift, placement, and friendly state changes." },
+      { "name": "squish", "value": "80ms cubic-bezier(.2, .9, .3, 1)", "purpose": "Immediate pressed feedback for controls." },
+      { "name": "reduced-motion", "value": "0.01ms or none", "purpose": "System preference override for nonessential transitions and animations." }
+    ],
+    "breakpoints": [
+      { "name": "phone-stack", "value": "767px" },
+      { "name": "tablet-band", "value": "768px–1023px" },
+      { "name": "desktop", "value": "1024px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Sticker Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Default committed action with espresso fill and tactile paper depth.",
+      "html": "<button class=\"ds-btn ds-btn-primary\">SAVE CHOICE</button>",
+      "css": ".ds-btn{min-height:44px;padding:12px 22px;border:2.5px solid var(--journal-espresso,#4a3026);border-radius:23.4px 18px 25.2px 16.2px/18px 25.2px 16.2px 23.4px;font:700 17px/1 var(--plop-font-letter,'Segoe Print',cursive);letter-spacing:.02em;background:var(--journal-cream,#fff8e8);box-shadow:0 0 0 3px var(--journal-cream,#fff8e8),4px 5px 0 3px rgb(70 42 28/20%);transition:transform 500ms cubic-bezier(.28,1.75,.5,1),box-shadow 500ms cubic-bezier(.28,1.75,.5,1)}.ds-btn-primary{background:var(--journal-espresso,#4a3026);color:var(--journal-cream,#fff8e8)}.ds-btn:hover{transform:translateY(-2px) rotate(-.4deg)}.ds-btn:active{transform:translateY(2px);box-shadow:0 0 0 3px var(--journal-cream,#fff8e8),1px 2px 0 3px rgb(70 42 28/20%);transition-duration:80ms}.ds-btn:focus-visible{outline:3px dashed #742f37;outline-offset:4px}"
+    },
+    {
+      "name": "Romantic Sticker Button",
+      "kind": "button",
+      "refersTo": "button-romantic",
+      "description": "Affectionate recipient-facing action in dusty rose.",
+      "html": "<button class=\"ds-btn-romantic\">ADD TO MY LIST</button>",
+      "css": ".ds-btn-romantic{min-height:44px;padding:12px 22px;border:2.5px solid var(--journal-espresso,#4a3026);border-radius:23.4px 18px 25.2px 16.2px/18px 25.2px 16.2px 23.4px;background:var(--journal-rose,#d58b8b);color:var(--journal-cocoa,#34221c);font:700 17px/1 var(--plop-font-letter,'Segoe Print',cursive);box-shadow:0 0 0 3px var(--journal-cream,#fff8e8),4px 5px 0 3px rgb(70 42 28/20%);transition:transform 500ms cubic-bezier(.28,1.75,.5,1)}.ds-btn-romantic:hover{transform:translateY(-2px) rotate(.4deg)}.ds-btn-romantic:active{transform:translateY(2px);box-shadow:0 0 0 3px var(--journal-cream,#fff8e8),1px 2px 0 3px rgb(70 42 28/20%)}.ds-btn-romantic:focus-visible{outline:3px dashed #742f37;outline-offset:4px}"
+    },
+    {
+      "name": "Text Field",
+      "kind": "input",
+      "refersTo": "field",
+      "description": "Visible handwritten label, cream paper input, and useful ordering hint.",
+      "html": "<label class=\"ds-field\"><span>NAME FOR THE CUSTOMIZATION</span><input placeholder=\"How it should be written\"><small>We will copy this exactly when ordering.</small></label>",
+      "css": ".ds-field{display:grid;gap:8px;color:var(--journal-cocoa,#34221c);font-family:var(--plop-font-body,'Segoe Print',cursive)}.ds-field>span{font-size:13px;font-weight:700}.ds-field input{min-height:44px;padding:12px 16px;border:2.5px solid var(--journal-espresso,#4a3026);border-radius:12.6px 9px 14.4px 9.9px/9.9px 14.4px 9px 12.6px;background:var(--journal-cream,#fff8e8);color:var(--journal-cocoa,#34221c);font:400 19px/1.3 inherit;box-shadow:3px 4px 0 rgb(70 42 28/20%)}.ds-field input:focus-visible{outline:3px dashed #742f37;outline-offset:4px}.ds-field small{font-size:15px;color:#68493d}"
+    },
+    {
+      "name": "Taped Journal Sheet",
+      "kind": "card",
+      "refersTo": "sheet",
+      "description": "Quiet cream working surface separated from the kraft field by ink, tape, and a short offset shadow.",
+      "html": "<section class=\"ds-sheet\"><i aria-hidden=\"true\"></i><h3>NOTHING PICKED YET</h3><p>Your favorite gifts will wait here when you find them.</p></section>",
+      "css": ".ds-sheet{position:relative;padding:28px;border:2.5px solid var(--journal-espresso,#4a3026);border-radius:12.6px 9px 14.4px 9.9px/9.9px 14.4px 9px 12.6px;background:var(--plop-sheet,#fffaf0);color:var(--journal-cocoa,#34221c);font-family:var(--plop-font-body,'Segoe Print',cursive);box-shadow:5px 7px 0 rgb(70 42 28/20%)}.ds-sheet i{position:absolute;top:-12px;left:28px;width:92px;height:25px;background:repeating-linear-gradient(-45deg,#91a17a 0 8px,#cbd3bd 8px 16px);clip-path:polygon(4% 0,100% 7%,95% 100%,0 92%);opacity:.85}.ds-sheet h3{margin:0 0 8px;font-size:26px;line-height:1}.ds-sheet p{margin:0;max-width:65ch;font-size:18px;line-height:1.55}.ds-sheet:focus-within{outline:3px dashed #742f37;outline-offset:4px}"
+    },
+    {
+      "name": "Status Tape Tag",
+      "kind": "chip",
+      "description": "Compact clipped label pairing spot color with explicit status text.",
+      "html": "<span class=\"ds-tag\">AVAILABLE</span>",
+      "css": ".ds-tag{display:inline-flex;align-items:center;min-height:28px;padding:4px 18px;background:var(--journal-sage,#91a17a);color:var(--journal-cocoa,#34221c);clip-path:polygon(7% 0,100% 8%,93% 100%,0 88%);font:700 13px/1 var(--plop-font-letter,'Segoe Print',cursive);letter-spacing:.04em}.ds-tag:hover{filter:brightness(1.04);transform:rotate(-1deg)}.ds-tag:focus-visible{outline:3px dashed #742f37;outline-offset:4px}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Keepsake Wish Journal",
+    "overview": "The interface feels like a private journal assembled by hand for one person. Kraft paper is the continuous field; taped cream sheets are the calm working surfaces; espresso marks behave like ink; dusty rose, sage, honey, and terracotta arrive as restrained spot colors. The result is affectionate and tactile without compromising the clarity of familiar controls.\n\nPlopUI supplies the hand-drawn edges, sticker silhouettes, paper textures, and small moments of bounce. The application wrapper keeps that personality disciplined: warm light is fixed, controls remain conventional in meaning, and responsive layout tidies the scrapbook composition instead of shrinking it indiscriminately.",
+    "keyCharacteristics": ["Fixed warm-light kraft environment with no dark-mode counterpart.", "Cream paper creates readable work zones within the textured field.", "Sketchpop is the single expressive voice across display, labels, and body copy.", "Important actions read as freshly pressed stickers with soft offset depth.", "Responsive wrappers preserve the material world from 320px phones through desktop."],
+    "rules": [
+      { "name": "The Warm-Light Rule", "body": "Every product surface stays in the fixed light presentation; do not introduce a dark theme or cool neutral substitute.", "section": "colors" },
+      { "name": "The Printed-Spot Rule", "body": "Rose, sage, honey, and terracotta communicate purpose in concert with words and icons; color never carries status alone.", "section": "colors" },
+      { "name": "The One-Hand Rule", "body": "Sketchpop is the shipped voice for display and utility copy alike; hierarchy comes from weight and scale, not a second family.", "section": "typography" },
+      { "name": "The Paper-Stack Rule", "body": "Create depth with fill, outline, tape, and a short opaque offset; never use glassmorphism or diffuse floating-card shadows.", "section": "elevation" }
+    ],
+    "dos": ["Do begin every feature inside the shared journal provider and responsive container wrappers.", "Do reserve cream sheets for dense choice-making and form work while letting kraft remain visible between sections.", "Do use clear labels, hints, and recovery messages even when the control is playful.", "Do keep interactive targets at least 44px and preserve the dashed visible focus treatment.", "Do honor system reduced-motion preferences and keep seeded decorative tilts stable."],
+    "donts": ["Don't introduce dark mode, cool white ecommerce cards, glass panels, or neutral gray dashboard chrome.", "Don't turn every object into a loud sticker; calm paper surfaces make the active stickers legible.", "Don't use spot color as the only status cue or hide form labels inside placeholders.", "Don't bypass the journal wrappers with one-off radii, shadows, fonts, or responsive rules.", "Don't shrink desktop compositions onto phones; stack fields and widen actions at the established breakpoint."]
+  }
+}

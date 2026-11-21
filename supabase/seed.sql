@@ -1,0 +1,1 @@
+-- Sample gifts and variants will be added after the initial schema migration.

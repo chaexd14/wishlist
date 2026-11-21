@@ -1,4 +1,28 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Birthday Wishlist
+
+A private birthday gift storefront where the recipient can choose gifts, variants,
+quantities, and customizations. The admin area turns submitted choices into a
+real-world purchase checklist.
+
+## Local setup
+
+1. Copy `.env.example` to `.env.local` if `.env.local` does not already exist.
+2. In Supabase, open **Project Settings -> API**.
+3. Add the project URL, publishable key, and service-role key to `.env.local`.
+4. Never commit `.env.local` or expose `SUPABASE_SERVICE_ROLE_KEY` to client code.
+5. Start the app with `npm run dev`.
+
+## Source layout
+
+- `src/app/(storefront)` — public catalog, cart, checkout, and confirmation routes
+- `src/app/admin` — private gift management and submitted wishlists
+- `src/components` — reusable UI grouped by feature
+- `src/features` — feature state, validation, queries, and mutations
+- `src/lib/supabase` — browser, server, and server-only admin clients
+- `src/lib/env` — validated public and server-only environment values
+- `supabase/migrations` — versioned database migrations
+- `supabase/seed.sql` — development seed data
+- `tests` — unit and end-to-end tests
 
 ## Getting Started
 
