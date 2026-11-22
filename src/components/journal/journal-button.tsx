@@ -14,13 +14,14 @@ const variants: Record<JournalButtonIntent, ButtonProps["variant"]> = {
 
 type JournalButtonProps = Omit<ButtonProps, "variant"> & {
   intent?: JournalButtonIntent;
+  variant?: ButtonProps["variant"];
 };
 
-export function JournalButton({ intent = "primary", type = "button", className = "", ...props }: JournalButtonProps) {
+export function JournalButton({ intent = "primary", variant, type = "button", className = "", ...props }: JournalButtonProps) {
   return (
     <Button
       type={type}
-      variant={variants[intent]}
+      variant={variant ?? variants[intent]}
       className={`journal-button ${className}`.trim()}
       {...props}
     />

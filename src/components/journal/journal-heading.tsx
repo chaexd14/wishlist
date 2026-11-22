@@ -1,14 +1,32 @@
-import { Heading, type HeadingProps } from "@plop-ui/react";
+import type { HTMLAttributes, ReactNode } from "react";
 
-type JournalHeadingProps = HeadingProps & {
+type JournalHeadingProps = Omit<HTMLAttributes<HTMLHeadingElement>, "children"> & {
+  children: ReactNode;
+  level?: 1 | 2 | 3 | 4 | 5 | 6;
   size?: "page" | "section" | "card";
+  scribble?: boolean;
+  /** Kept for API compatibility. Journal headings are deliberately stable. */
+  writeOn?: boolean;
 };
 
-export function JournalHeading({ size = "section", className = "", ...props }: JournalHeadingProps) {
+export function JournalHeading({
+  children,
+  level = 2,
+  size = "section",
+  scribble = level <= 2,
+  writeOn,
+  className = "",
+  ...props
+}: JournalHeadingProps) {
+  void writeOn;
+  const HeadingTag = `h${level}` as const;
+
   return (
-    <Heading
-      className={`journal-heading journal-heading--${size} ${className}`.trim()}
+    <HeadingTag
+      className={`journal-heading journal-heading--${size}${scribble ? " journal-heading--scribble" : ""} ${className}`.trim()}
       {...props}
-    />
+    >
+      {children}
+    </HeadingTag>
   );
 }

@@ -1,13 +1,16 @@
 # Birthday Wishlist Roadmap
 
-Phase A established the responsive kraft-journal design system, shared PlopUI
-wrappers, local fonts, and the internal `/design-system` gallery. The remaining
-work will proceed in the following order.
+Phase A established the responsive journal design system, shared PlopUI wrappers,
+stable local typography, four recipient-selectable palettes, and the internal
+`/design-system` UI Lab with curated components and interaction effects. It also
+completed the first motion and rendering performance pass. The remaining work
+will proceed in the following order.
 
 ## Phase B — Welcome and gift catalog
 
 - Replace the storefront placeholder with a personal birthday welcome page.
-- Add the responsive storefront header, navigation, cart counter, and gift grid.
+- Add the responsive storefront header, navigation, cart counter, and gift grid,
+  integrating the existing compact palette switcher into the final shell.
 - Build gift cards with imagery, availability, and clear selection actions.
 - Use clearly illustrative sample gifts until the real catalog is supplied.
 

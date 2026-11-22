@@ -30,6 +30,7 @@ try {
         .filter((element) => {
           const style = getComputedStyle(element);
           if (style.position === "fixed" || style.display === "none") return false;
+          if (element.closest(".Spinner_penStrip")) return false;
           const rect = element.getBoundingClientRect();
           return rect.width > 0 && (rect.left < -1 || rect.right > viewportWidth + 1);
         })

@@ -87,7 +87,7 @@ components:
 
 The interface feels like a private journal assembled by hand for one person. Kraft paper is the continuous field; taped cream sheets are the calm working surfaces; espresso marks behave like ink; dusty rose, sage, honey, and terracotta arrive as restrained spot colors. The result is affectionate and tactile without compromising the clarity of familiar controls.
 
-PlopUI supplies the hand-drawn edges, sticker silhouettes, paper textures, and small moments of bounce. The application wrapper keeps that personality disciplined: warm light is fixed, controls remain conventional in meaning, and responsive layout tidies the scrapbook composition instead of shrinking it indiscriminately.
+PlopUI supplies the hand-drawn edges, sticker silhouettes, paper textures, and short moments of response. The application wrapper keeps that personality disciplined: warm light is fixed, headings render as stable semantic text, controls remain conventional in meaning, and responsive layout tidies the scrapbook composition instead of shrinking it indiscriminately.
 
 **Key Characteristics:**
 
@@ -122,7 +122,16 @@ The palette is low-chroma, warm, and material-led: brown ink and kraft establish
 
 ### Named Rules
 
-**The Warm-Light Rule.** Every product surface stays in the fixed light presentation; do not introduce a dark theme or cool neutral substitute.
+**The Light-Journal Rule.** Every product surface stays in a light scrapbook presentation. Coffee Brown is the default; Light Pink, Light Purple, and Sky Blue reuse the same semantic ink, paper, accent, and status roles without introducing dark mode.
+
+### Palette collection
+
+- **Coffee Brown:** kraft `#B8895E`, cocoa `#34221C`, cream `#FFFAF0`, dusty rose `#D58B8B`, honey `#D5A942`.
+- **Light Pink:** blush `#E8B8C3`, berry ink `#4A2834`, cream `#FFF8F8`, rose `#C86F8B`, pale rose `#E8A7B9`.
+- **Light Purple:** lilac `#C9B8DD`, plum ink `#372A4A`, cream `#FCF8FF`, violet `#9A79C3`, pale violet `#D7B8E8`.
+- **Sky Blue:** sky `#B8D9E8`, ocean ink `#243B4A`, cream `#F7FCFF`, blue `#659FBE`, pale blue `#A7D1E7`.
+
+The recipient may change palettes. The choice is stored in a cookie and applied before paint; status colors retain their meaning in every palette.
 
 **The Printed-Spot Rule.** Rose, sage, honey, and terracotta communicate purpose in concert with words and icons; color never carries status alone.
 
@@ -135,7 +144,7 @@ The palette is low-chroma, warm, and material-led: brown ink and kraft establish
 
 ### Hierarchy
 
-- **Page Display** (900, fluid 2.65–5.7rem, 0.96 line-height): the first journal statement; keep to approximately 18 characters per line and balance wrapping.
+- **Page Display** (900, fluid 2.65–5.7rem, 0.96 line-height): the first journal statement; keep to approximately 18 characters per line, balance wrapping, and never split it into animated character spans.
 - **Section Heading** (900, fluid 2–3.35rem, 1 line-height): names major working groups and carries the terracotta scribble treatment.
 - **Card Heading** (900, fluid 1.5–2rem, 1.05 line-height): concise empty-state and container titles.
 - **Body** (400, 19px base, 1.55 line-height): instructions and help text; long reading lines stop near 65 characters.
@@ -173,7 +182,7 @@ Depth is structural but deliberately shallow. Cream sheets and stickers use opaq
 
 ## Shapes
 
-Shapes are intentionally imperfect but controlled. PlopUI's sticker, face, and box radii use different corner values on each side, scaled globally to 90% roundness. Controls use 2.5–3px ink strokes; tags have clipped tape ends; feedback blocks use torn-paper edges; sheets use subtly uneven box corners. Stable seeded tilts make stickers feel placed by hand without causing visual jitter.
+Shapes are intentionally imperfect but controlled. PlopUI's sticker, face, and box radii use different corner values on each side, scaled globally to 90% roundness. Controls use 2.5–3px ink strokes; tags have clipped tape ends; feedback blocks use torn-paper edges; sheets use subtly uneven box corners. Stable seeded tilts make stickers feel placed by hand without causing visual jitter. Static irregularity carries the handmade character; SVG-filter boiling is not used as ambient motion.
 
 **The Useful-Wobble Rule.** Irregularity belongs to silhouettes, strokes, and fixed tilts; alignment, reading order, and hit areas remain stable.
 
@@ -186,7 +195,7 @@ Shapes are intentionally imperfect but controlled. PlopUI's sticker, face, and b
 - **Romantic:** Dusty rose with cocoa lettering for affectionate, recipient-facing moments.
 - **Secondary:** Honey with cocoa lettering for editing and supportive actions.
 - **Quiet / Danger:** Cream and terracotta respectively; quiet preserves the sticker outline, danger remains explicit in its label.
-- **Hover / Focus / Active:** Hover uses the PlopUI spring lift; active compresses the shadow; keyboard focus is a 3px dashed oxblood outline offset by 4px. Loading and disabled states keep their footprint and readable label.
+- **Hover / Focus / Active:** Hover uses a short 160ms lift without filter boiling; active compresses the shadow; keyboard focus is a 3px dashed oxblood outline offset by 4px. Loading and disabled states keep their footprint and readable label.
 
 ### Tags
 
@@ -210,6 +219,10 @@ Shapes are intentionally imperfect but controlled. PlopUI's sticker, face, and b
 ### Journal Wrapper
 
 `JournalProvider` is the system boundary. It fixes `surface="kraft"`, `theme="light"`, soft sticker shadows, 0.9 roundness, dotted toast backdrops, no paint or sound effects, and system-respecting reduced motion. Feature screens compose through `JournalContainer`, `JournalSheet`, `JournalHeading`, `JournalButton`, and the field wrappers rather than styling raw PlopUI primitives independently.
+
+### UI Lab
+
+`/design-system` is the product's UI Lab. It documents the approved palette collection, PlopUI button variants, opt-in burst effects, form controls, navigation, feedback, progress, and journal content pieces. Interactive demonstrations are isolated client components; the surrounding catalog stays server rendered.
 
 ## Do's and Don'ts
 

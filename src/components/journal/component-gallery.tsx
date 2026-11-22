@@ -1,32 +1,15 @@
-"use client";
-
 import { Buddy, Callout, Doodle } from "@plop-ui/react";
-import { useState } from "react";
 
 import {
   JournalButton,
-  JournalCheckbox,
   JournalHeading,
-  JournalNumberStepper,
-  JournalRadio,
-  JournalRadioGroup,
-  JournalSelect,
   JournalSheet,
   JournalTag,
-  JournalTextArea,
-  JournalTextField,
 } from "@/components/journal";
-
-const colorOptions = [
-  { value: "rose", label: "Dusty rose", lead: { dot: "bubblegum" as const } },
-  { value: "sage", label: "Garden sage", lead: { dot: "mint" as const } },
-  { value: "honey", label: "Honey yellow", lead: { dot: "mustard" as const } },
-];
+import { GalleryFormDemo } from "@/components/journal/gallery-form-demo";
+import { UiLabPlayground } from "@/components/journal/ui-lab-playground";
 
 export function ComponentGallery() {
-  const [quantity, setQuantity] = useState(1);
-  const [color, setColor] = useState<string | null>("rose");
-
   return (
     <div className="gallery-stack">
       <JournalSheet spacing="roomy" className="gallery-intro">
@@ -52,6 +35,18 @@ export function ComponentGallery() {
           <span>for her</span>
         </div>
       </JournalSheet>
+
+      <nav className="lab-index" aria-label="UI Lab sections">
+        <a href="#themes">Themes</a>
+        <a href="#buttons">Buttons</a>
+        <a href="#effects">Effects</a>
+        <a href="#forms-title">Forms</a>
+        <a href="#navigation">Navigation</a>
+        <a href="#feedback">Feedback</a>
+        <a href="#journal-content">Journal pieces</a>
+      </nav>
+
+      <UiLabPlayground />
 
       <section className="gallery-section" aria-labelledby="actions-title">
         <div className="gallery-section__heading">
@@ -95,50 +90,11 @@ export function ComponentGallery() {
           <p>Every field has a visible name, useful help, and a clear recovery message.</p>
         </div>
         <JournalSheet tape="bubblegum" spacing="comfortable">
-          <div className="gallery-form-grid">
-            <JournalTextField
-              label="Name for the customization"
-              placeholder="How it should be written"
-              hint="We will copy this exactly when ordering."
-            />
-            <JournalSelect
-              label="Favorite color"
-              options={colorOptions}
-              value={color}
-              onValueChange={setColor}
-              hint="Choose the color you would reach for first."
-            />
-            <JournalTextArea
-              className="gallery-form-grid__wide"
-              label="A note about your perfect version"
-              placeholder="Size, engraving, fabric, or any detail that matters…"
-              hint="You can be as specific as you like."
-              rows={4}
-            />
-            <JournalRadioGroup legend="Preferred finish" defaultValue="matte" name="finish">
-              <JournalRadio value="matte" dotColor="var(--plop-bubblegum)">Matte and soft</JournalRadio>
-              <JournalRadio value="glossy" dotColor="var(--plop-mustard)">Glossy and bright</JournalRadio>
-            </JournalRadioGroup>
-            <div className="gallery-quantity">
-              <JournalNumberStepper
-                label="Quantity"
-                min={1}
-                max={3}
-                value={quantity}
-                onValueChange={setQuantity}
-                seed="gallery-quantity"
-              />
-              <p>Maximum three for this gift.</p>
-            </div>
-            <div className="gallery-checks">
-              <JournalCheckbox defaultChecked>Gift wrap this one</JournalCheckbox>
-              <JournalCheckbox>Surprise me with the shade</JournalCheckbox>
-            </div>
-          </div>
+          <GalleryFormDemo />
         </JournalSheet>
       </section>
 
-      <section className="gallery-section" aria-labelledby="feedback-title">
+      <section className="gallery-section" id="edge-states" aria-labelledby="feedback-title">
         <div className="gallery-section__heading">
           <JournalHeading level={2} id="feedback-title" writeOn={false}>
             Reassurance at every step
