@@ -1,12 +1,14 @@
 import { ComponentGallery } from "@/components/journal/component-gallery";
-import { JournalContainer } from "@/components/journal";
+import { JournalContainer, JournalPageTransition } from "@/components/journal";
 
 export default function DesignSystemPage() {
   return (
-    <main className="gallery-page">
-      <JournalContainer>
-        <ComponentGallery />
-      </JournalContainer>
-    </main>
+    <JournalPageTransition>
+      <main className="gallery-page">
+        <JournalContainer>
+          <ComponentGallery />
+        </JournalContainer>
+      </main>
+    </JournalPageTransition>
   );
 }

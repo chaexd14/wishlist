@@ -1,8 +1,15 @@
+import { JournalContainer, JournalPageTransition } from "@/components/journal";
+import { WelcomeExperience } from "@/components/welcome/welcome-experience";
+import { welcomeLetter } from "@/content/welcome-letter";
+
 export default function HomePage() {
   return (
-    <main>
-      <h1>Birthday Wishlist</h1>
-      <p>The storefront foundation is ready. Gift browsing comes next.</p>
-    </main>
+    <JournalPageTransition>
+      <main className="welcome-page">
+        <JournalContainer>
+          <WelcomeExperience content={welcomeLetter} />
+        </JournalContainer>
+      </main>
+    </JournalPageTransition>
   );
 }

@@ -19,11 +19,13 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       data-plop-surface="kraft"
       data-plop-theme="light"
       data-journal-palette={DEFAULT_JOURNAL_PALETTE}
+      data-scroll-behavior="smooth"
+      suppressHydrationWarning
     >
       <head>
         <script
           dangerouslySetInnerHTML={{
-            __html: `(function(){var m=document.cookie.match(/(?:^|; )journal-palette=(coffee|pink|purple|sky)(?:;|$)/);if(m)document.documentElement.dataset.journalPalette=m[1]})()`,
+            __html: `(function(){var d=document.documentElement;var m=document.cookie.match(/(?:^|; )journal-palette=(coffee|pink|purple|sky)(?:;|$)/);if(m)d.dataset.journalPalette=m[1];var p=location.pathname;d.dataset.plopSurface=p==='/'?'mat':(p.indexOf('/gifts')===0||p==='/cart'||p==='/checkout'||p.indexOf('/confirmation')===0)?'notebook':'kraft'})()`,
           }}
         />
       </head>

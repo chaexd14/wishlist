@@ -1,13 +1,13 @@
-import type { ReactNode } from "react";
+import { Suspense, type ReactNode } from "react";
 
-import { JournalThemeSwitcher } from "@/components/journal";
+import { StorefrontHeader } from "@/components/storefront/storefront-header";
 
 export default function StorefrontLayout({ children }: { children: ReactNode }) {
   return (
     <>
-      <div className="storefront-theme-control">
-        <JournalThemeSwitcher compact />
-      </div>
+      <Suspense fallback={null}>
+        <StorefrontHeader />
+      </Suspense>
       {children}
     </>
   );

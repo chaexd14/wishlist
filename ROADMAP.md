@@ -2,19 +2,32 @@
 
 Phase A established the responsive journal design system, shared PlopUI wrappers,
 stable local typography, four recipient-selectable palettes, and the internal
-`/design-system` UI Lab with curated components and interaction effects. It also
-completed the first motion and rendering performance pass. The remaining work
-will proceed in the following order.
+`/design-system` UI Lab with curated components and interaction effects. Phase B
+then completed the interactive welcome ritual, responsive illustrative catalog,
+swipeable gift details, variant selection, and persistent local cart. The remaining
+implementation work begins with the database-backed wishlist submission.
 
-## Phase B — Welcome and gift catalog
+## Phase B1 — Interactive welcome
 
-- Replace the storefront placeholder with a personal birthday welcome page.
+**Status: complete.**
+
+- Present a heart-sealed envelope, readable birthday letter, optional local email,
+  and accessible sticker-peel ritual before entering the catalog.
+- Keep personal copy in one typed content module and clearly mark sample wording.
+- Preserve welcome progress locally and give returning visitors a catalog shortcut.
+
+## Phase B2 — Storefront shell and gift catalog
+
+**Status: complete.**
+
 - Add the responsive storefront header, navigation, cart counter, and gift grid,
   integrating the existing compact palette switcher into the final shell.
 - Build gift cards with imagery, availability, and clear selection actions.
 - Use clearly illustrative sample gifts until the real catalog is supplied.
 
 ## Phase C — Gift selection and cart
+
+**Status: complete.**
 
 - Build individual gift pages with data-driven color, size, style, and other variants.
 - Add maximum quantities, optional customization, and validation feedback.

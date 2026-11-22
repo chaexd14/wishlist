@@ -1,19 +1,20 @@
 ---
 name: Birthday Wishlist Journal
-description: A warm kraft-paper journal system for choosing and recording personal birthday wishes.
+description: A light paper journal system with lively coordinated colors for choosing personal birthday wishes.
 colors:
-  espresso: "#4a3026"
-  cocoa: "#34221c"
-  kraft: "#b8895e"
-  cream: "#fff8e8"
-  paper: "#f3e1be"
-  sheet: "#fffaf0"
-  dusty-rose: "#d58b8b"
-  garden-sage: "#91a17a"
-  honey: "#d5a942"
-  terracotta: "#b85c45"
-  soft-ink: "#68493d"
-  focus-oxblood: "#742f37"
+  espresso: "#35222e"
+  cocoa: "#35222e"
+  kraft: "#f7eedb"
+  cream: "#fff9ec"
+  paper: "#ebdcc5"
+  sheet: "#fff9ec"
+  dusty-rose: "#e9a7b8"
+  garden-sage: "#a8d5b5"
+  honey: "#f0c85e"
+  terracotta: "#c8684a"
+  soft-ink: "#624b55"
+  focus-oxblood: "#7a3150"
+  action-warm: "#a8472f"
 typography:
   display:
     fontFamily: "Sketchpop, Segoe Print, Comic Sans MS, cursive"
@@ -45,7 +46,7 @@ spacing:
   section: "clamp(4rem, 10vw, 8rem)"
 components:
   button-primary:
-    backgroundColor: "{colors.espresso}"
+    backgroundColor: "{colors.action-warm}"
     textColor: "{colors.cream}"
     typography: "{typography.body}"
     rounded: "{rounded.sticker}"
@@ -91,7 +92,7 @@ PlopUI supplies the hand-drawn edges, sticker silhouettes, paper textures, and s
 
 **Key Characteristics:**
 
-- Fixed warm-light kraft environment with no dark-mode counterpart.
+- Fixed warm-light paper environment with no dark-mode counterpart.
 - Cream paper creates readable work zones within the textured field.
 - Sketchpop is the single expressive voice across display, labels, and body copy.
 - Important actions read as freshly pressed stickers with soft offset depth.
@@ -99,7 +100,7 @@ PlopUI supplies the hand-drawn edges, sticker silhouettes, paper textures, and s
 
 ## Colors
 
-The palette is low-chroma, warm, and material-led: brown ink and kraft establish the journal, cream protects readability, and four printed spot colors carry meaning and emphasis.
+The palette is paper-led and celebratory: plum-espresso ink establishes the journal, a light warm canvas protects readability, and six coordinated spot colors carry meaning and emphasis.
 
 ### Primary
 
@@ -118,18 +119,20 @@ The palette is low-chroma, warm, and material-led: brown ink and kraft establish
 - **Cocoa Copy:** Primary reading text and text placed on pale spot colors.
 - **Warm Cream:** Button outlines, light controls, and high-contrast text on dark fills.
 - **Quiet Sheet:** The slightly cleaner cream used for taped working surfaces.
-- **Soft Ink:** Supporting copy and lower-emphasis labels on the kraft field.
+- **Soft Ink:** Supporting copy and lower-emphasis labels on the light paper field.
 
 ### Named Rules
 
-**The Light-Journal Rule.** Every product surface stays in a light scrapbook presentation. Coffee Brown is the default; Light Pink, Light Purple, and Sky Blue reuse the same semantic ink, paper, accent, and status roles without introducing dark mode.
+**The Light-Journal Rule.** Every product surface stays on the same light warm-paper canvas with dark plum-espresso ink. Theme choices change the dominant action and focus color while the complete spot-color collection remains available in every mood; there is no dark mode.
 
 ### Palette collection
 
-- **Coffee Brown:** kraft `#B8895E`, cocoa `#34221C`, cream `#FFFAF0`, dusty rose `#D58B8B`, honey `#D5A942`.
-- **Light Pink:** blush `#E8B8C3`, berry ink `#4A2834`, cream `#FFF8F8`, rose `#C86F8B`, pale rose `#E8A7B9`.
-- **Light Purple:** lilac `#C9B8DD`, plum ink `#372A4A`, cream `#FCF8FF`, violet `#9A79C3`, pale violet `#D7B8E8`.
-- **Sky Blue:** sky `#B8D9E8`, ocean ink `#243B4A`, cream `#F7FCFF`, blue `#659FBE`, pale blue `#A7D1E7`.
+- **Shared foundation:** canvas `#F7EEDB`, sheet `#FFF9EC`, muted paper `#EBDCC5`, ink `#35222E`, secondary ink `#624B55`.
+- **Shared spot colors:** rose `#E9A7B8`, lilac `#C5B3E6`, sky `#A9D8EA`, mint `#A8D5B5`, honey `#F0C85E`, terracotta `#C8684A`.
+- **Warm Confetti:** terracotta action `#A8472F`.
+- **Rose Garden:** berry action `#A63B67`.
+- **Lilac Wishes:** violet action `#68499A`.
+- **Blue Daydream:** ocean action `#2E6F8A`.
 
 The recipient may change palettes. The choice is stored in a cookie and applied before paint; status colors retain their meaning in every palette.
 
@@ -158,13 +161,13 @@ The recipient may change palettes. The choice is stored in a cookie and applied 
 
 ## Layout
 
-The standard wrapper is centered at a maximum width of 74rem with 1rem gutters. Narrow reading surfaces may cap at 48rem; full working surfaces may grow to 90rem. The gallery uses a spacious vertical rhythm of `clamp(4rem, 10vw, 8rem)`, allowing the kraft field to remain visible between paper objects.
+The standard wrapper is centered at a maximum width of 74rem with 1rem gutters. Narrow reading surfaces may cap at 48rem; full working surfaces may grow to 90rem. The gallery uses a spacious vertical rhythm of `clamp(4rem, 10vw, 8rem)`, allowing the patterned paper field to remain visible between objects.
 
 Sheets carry three spacing modes: compact (`clamp(1rem, 2vw, 1.5rem)`), comfortable (`clamp(1.25rem, 3vw, 2.25rem)`), and roomy (`clamp(1.5rem, 4vw, 3.5rem)`). Content groups use grid for alignment and flex-wrap for sticker rows.
 
 Below 768px, horizontal gutters tighten to 0.625rem per side, two-column forms and feedback become a single column, the intro mark recedes behind the copy, and action buttons expand to nearly the full sheet width. From 768px through 1023px, the intro reserves a compact 9rem mark column while forms remain two-column. At 1024px and above, content uses the full centered composition. The verified captures at phone, iPad portrait, iPad landscape, and desktop preserve the same visual language without horizontal overflow.
 
-**The Tidy-Scrapbook Rule.** Responsive changes rearrange and widen objects; they do not remove the kraft field, taped sheets, or sticker identity.
+**The Tidy-Scrapbook Rule.** Responsive changes rearrange and widen objects; they do not remove the patterned paper field, taped sheets, or sticker identity.
 
 ## Elevation & Depth
 
@@ -205,7 +208,7 @@ Shapes are intentionally imperfect but controlled. PlopUI's sticker, face, and b
 ### Cards / Containers
 
 - **Corner Style:** Gently uneven box silhouette at 90% PlopUI roundness.
-- **Background:** Quiet cream sheets over the kraft field.
+- **Background:** Quiet cream sheets over the light patterned field.
 - **Shadow Strategy:** Short hard offset in soft brown ink.
 - **Border:** Hand-drawn espresso stroke.
 - **Internal Padding:** Compact, comfortable, or roomy wrapper spacing; mustard tape by default with semantic spot-color variants.
@@ -213,23 +216,43 @@ Shapes are intentionally imperfect but controlled. PlopUI's sticker, face, and b
 ### Inputs / Fields
 
 - **Style:** Warm cream paper, espresso hand-drawn border, cocoa text, visible external labels, and contextual hint text.
-- **Focus:** Dashed oxblood focus treatment remains visible against both kraft and cream.
+- **Focus:** Dashed mood-colored focus treatment remains visible against both the canvas and cream sheets.
 - **Validation:** Recovery copy names the missing detail and the next action. Radios, checkboxes, select, textarea, and number stepper retain conventional semantics.
 
 ### Journal Wrapper
 
-`JournalProvider` is the system boundary. It fixes `surface="kraft"`, `theme="light"`, soft sticker shadows, 0.9 roundness, dotted toast backdrops, no paint or sound effects, and system-respecting reduced motion. Feature screens compose through `JournalContainer`, `JournalSheet`, `JournalHeading`, `JournalButton`, and the field wrappers rather than styling raw PlopUI primitives independently.
+`JournalProvider` is the system boundary. It maps the active route to PlopUI's surface (`surface="mat"` cutting mat on `/`, `surface="notebook"` ruled notebook across `/gifts`, `/gifts/[giftId]`, `/cart`, `/checkout`, and `/confirmation/*`, and `surface="kraft"` on utility/lab routes), fixes `theme="light"`, soft sticker shadows, 0.9 roundness, dotted toast backdrops, no sound effects, and system-respecting reduced motion. Feature screens compose through `JournalContainer`, `JournalSheet`, `JournalHeading`, `JournalButton`, and the field wrappers rather than styling raw PlopUI primitives independently.
 
 ### UI Lab
 
 `/design-system` is the product's UI Lab. It documents the approved palette collection, PlopUI button variants, opt-in burst effects, form controls, navigation, feedback, progress, and journal content pieces. Interactive demonstrations are isolated client components; the surrounding catalog stays server rendered.
+
+### Welcome ritual
+
+The storefront opens on PlopUI's cutting mat surface (`mat`) with no header chrome or theme switcher, focusing attention on a heart-sealed paper envelope rather than a conventional hero. Opening it reveals a stable cream letter, followed by an optional locally saved email and a peelable sticker that reveals the catalog action. The envelope and peel mechanics may use custom paper geometry, while headings, actions, fields, tags, colors, focus, and feedback must come from the shared journal system. Keyboard activation always provides the same outcome as pointer gestures, and reduced motion resolves each state immediately.
+
+### Storefront catalog
+
+Entering `/gifts` transitions the surface to PlopUI's ruled notebook (`notebook`) with a compact journal header, persistent palette switcher, searchable gift index, category stickers, and a responsive collection of paper gift cards. Cards use the shared PlopUI actions, doodles, tags, status language, outlines, and shadows; only the product-art field supplies illustrative spot-color variation. Until the real catalog is provided, every example is explicitly labeled illustrative and remains centralized in typed sample data. The grid presents one column on phones, two on iPad-sized screens, and three on desktop without changing card meaning or interaction order.
+
+### Gift details and list
+
+Each gift opens as a swipeable four-view paper collage paired with a taped configuration sheet. Touch scrolling and position dots lead on phones; thumbnails and previous/next stickers support larger screens. The phone sequence is gallery, choices, then supporting details, while desktop keeps the choice sheet visible beside the collage. Variant groups, customization, quantity, validation, confirmation, and cart editing reuse the journal wrappers and PlopUI controls. Illustrative media remains clearly labeled and may later be replaced by real image URLs without changing the gallery contract.
+
+### Page & theme transitions
+
+Route and palette changes use the browser's View Transitions API via React `<ViewTransition>` and `transitionTypes`, with all spatial motion stepping down to a calm `150ms` opacity crossfade under `prefers-reduced-motion`:
+
+- **Cutting mat ↔ Notebook (`page-peel-forward` / `page-peel-back`):** Navigating between `/` and `/gifts` runs a diagonal corner sheet peel (`480ms` enter, `420ms` reverse) so the ruled notebook turns cleanly over the cutting mat.
+- **Notebook pages (`page-turn-forward` / `page-turn-back`):** Moving between `/gifts`, `/gifts/[giftId]`, and `/cart` keeps `.storefront-chrome` anchored while turning the notebook sheet underneath (`180ms` exit, `380ms` enter).
+- **Journal mood switch (`data-theme-transition="true"`):** Choosing a palette radiates a `460ms` circular ink-wash sweep from the pressed swatch center.
 
 ## Do's and Don'ts
 
 ### Do:
 
 - **Do** begin every feature inside the shared journal provider and responsive container wrappers.
-- **Do** reserve cream sheets for dense choice-making and form work while letting kraft remain visible between sections.
+- **Do** reserve cream sheets for dense choice-making and form work while letting the light patterned canvas remain visible between sections.
 - **Do** use clear labels, hints, and recovery messages even when the control is playful.
 - **Do** keep interactive targets at least 44px and preserve the dashed visible focus treatment.
 - **Do** honor system reduced-motion preferences and keep seeded decorative tilts stable.

@@ -68,7 +68,7 @@ export function UiLabPlayground() {
       <section className="gallery-section" id="themes" aria-labelledby="themes-title">
         <div className="gallery-section__heading">
           <JournalHeading level={2} id="themes-title">Four journal moods</JournalHeading>
-          <p>The chosen palette follows you across the app and is remembered on this device.</p>
+          <p>Every mood shares the same lively color collection and readable paper foundation; only the dominant action color changes.</p>
         </div>
         <JournalThemeSwitcher />
       </section>
@@ -129,8 +129,8 @@ export function UiLabPlayground() {
             </JournalSheet>
           ))}
           <JournalSheet spacing="compact">
-            <JournalButton burst={["#4A2834", "#E8B8C3", "#C9B8DD", "#B8D9E8"]} seed="custom-confetti">Custom mix</JournalButton>
-            <p>All four palettes together</p>
+            <JournalButton burst={["#E9A7B8", "#C5B3E6", "#A9D8EA", "#A8D5B5", "#F0C85E"]} seed="custom-confetti">Custom mix</JournalButton>
+            <p>The shared birthday color collection</p>
           </JournalSheet>
         </div>
       </section>

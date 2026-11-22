@@ -4,7 +4,7 @@ import path from "node:path";
 import { chromium } from "playwright-core";
 
 const edgePath = "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe";
-const baseUrl = process.env.RESPONSIVE_TEST_URL ?? "http://localhost:3000/design-system";
+const baseUrl = process.env.RESPONSIVE_TEST_URL ?? "http://localhost:3001/design-system";
 const outputDirectory = path.resolve(".impeccable/review/responsive");
 const viewports = [
   { name: "phone", width: 375, height: 812 },
