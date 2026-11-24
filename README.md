@@ -1,60 +1,52 @@
-# Birthday Wishlist
+# Birthday Wishlist Journal
 
-A private birthday gift storefront where the recipient can choose gifts, variants,
-quantities, and customizations. The admin area turns submitted choices into a
-real-world purchase checklist.
+A private, responsive birthday journal where one recipient can choose gifts,
+variants, quantities, and personalizations. A protected admin workspace turns the
+submitted snapshot into a real-world purchase checklist.
 
 ## Local setup
 
-1. Copy `.env.example` to `.env.local` if `.env.local` does not already exist.
-2. In Supabase, open **Project Settings -> API**.
-3. Add the project URL, publishable key, and service-role key to `.env.local`.
-4. Never commit `.env.local` or expose `SUPABASE_SERVICE_ROLE_KEY` to client code.
-5. Start the app with `npm run dev`.
+1. Copy `.env.example` to `.env.local` and add the Supabase project URL, publishable key, and server-only secret key.
+2. Apply `supabase/migrations/202611240001_phase_d_wishlist.sql` in the Supabase SQL Editor.
+3. Run `npm run seed:supabase` for the illustrative development catalog.
+4. Create a private Supabase Auth user, set `ADMIN_EMAILS`, and keep public signup disabled.
+5. Run `npm run dev` and open `http://localhost:3001`.
 
-## Source layout
+Never commit `.env.local`, `.env.development.local`, or the Supabase secret key.
 
-- `src/app/(storefront)` — public catalog, cart, checkout, and confirmation routes
-- `src/app/admin` — private gift management and submitted wishlists
-- `src/components` — reusable UI grouped by feature
-- `src/features` — feature state, validation, queries, and mutations
-- `src/lib/supabase` — browser, server, and server-only admin clients
-- `src/lib/env` — validated public and server-only environment values
-- `supabase/migrations` — versioned database migrations
-- `supabase/seed.sql` — development seed data
-- `tests` — unit and end-to-end tests
-
-## Getting Started
-
-First, run the development server:
+## Useful commands
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm run lint
+npx tsc --noEmit
+npm run build
+npm run test:phase-g
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The complete test collection lives in `tests/e2e`. Phase E uses temporary live
+Supabase submissions and removes them after verification.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Production deployment
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Set these values in Vercel before deploying:
 
-## Learn More
+- `NEXT_PUBLIC_SITE_URL`
+- `NEXT_PUBLIC_SUPABASE_URL`
+- `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`
+- `SUPABASE_SERVICE_ROLE_KEY`
+- `ADMIN_EMAILS`
 
-To learn more about Next.js, take a look at the following resources:
+`/design-system` returns a not-found response in production unless an allowed
+admin is signed in. Search indexing is disabled because this is a private
+personal site.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Source layout
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `src/app/(storefront)` — welcome, catalog, cart, checkout, and confirmation
+- `src/app/admin` — authenticated catalog management and purchase checklists
+- `src/components` — reusable journal, storefront, checkout, and admin UI
+- `src/data` — server-only catalog, submission, and admin repositories
+- `src/lib/auth` — admin allowlisting and authentication
+- `supabase` — migration, seed data, and setup notes
+- `tests/e2e` — responsive workflow and security regressions

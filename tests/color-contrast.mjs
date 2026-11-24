@@ -1,7 +1,7 @@
 const colors = {
   canvas: "#F7EEDB", notebook: "#F8F4E9", mat: "#2E6B55", matInk: "#FFF8E7",
   surface: "#FFF9EC", ink: "#35222E", softInk: "#624B55",
-  warm: "#A8472F", rose: "#A63B67", lilac: "#68499A", sky: "#2E6F8A",
+  rose: "#A63B67",
   roseSpot: "#E9A7B8", lilacSpot: "#C5B3E6", skySpot: "#A9D8EA", mintSpot: "#A8D5B5", honeySpot: "#F0C85E",
 };
 
@@ -24,7 +24,7 @@ const checks = [
   ["secondary text on notebook", colors.softInk, colors.notebook, 4.5],
   ["cream text on cutting mat", colors.matInk, colors.mat, 4.5],
   ["primary text on sheet", colors.ink, colors.surface, 4.5],
-  ...["warm", "rose", "lilac", "sky"].map((mood) => [`cream text on ${mood} action`, colors.surface, colors[mood], 4.5]),
+  ["cream text on rose action", colors.surface, colors.rose, 4.5],
   ...["roseSpot", "lilacSpot", "skySpot", "mintSpot", "honeySpot"].map((spot) => [`ink on ${spot}`, colors.ink, colors[spot], 4.5]),
 ];
 

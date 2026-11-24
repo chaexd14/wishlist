@@ -1,6 +1,7 @@
 "use client";
 
 import { Doodle, IconButton } from "@plop-ui/react";
+import Image from "next/image";
 import { useRef, useState } from "react";
 
 import type { GiftGallerySlide } from "@/data/sample-gifts";
@@ -33,7 +34,7 @@ export function GiftGallery({ title, slides }: { title: string; slides: GiftGall
             <figure key={slide.id} className={`gift-gallery__slide gift-card__art--${slide.tone}`} aria-label={`${slide.label}, image ${index + 1} of ${slides.length}`}>
               <div className="gift-gallery__illustration" aria-hidden="true">
                 <span className="gift-gallery__view-label">{slide.label}</span>
-                <Doodle kind={slide.doodle} tone={slide.tone} size={index === 0 ? 148 : 118} tilt={index % 2 ? 5 : -5} />
+                {slide.imageUrl ? <Image className="gift-gallery__image" src={slide.imageUrl} alt="" fill sizes="(max-width: 767px) 90vw, 50vw" unoptimized /> : <Doodle kind={slide.doodle} tone={slide.tone} size={index === 0 ? 148 : 118} tilt={index % 2 ? 5 : -5} />}
               </div>
               <figcaption>{slide.caption}</figcaption>
             </figure>
@@ -44,15 +45,7 @@ export function GiftGallery({ title, slides }: { title: string; slides: GiftGall
           <IconButton icon={<Arrow direction="right" />} label="Next gift view" size="sm" variant="plain" disabled={active === slides.length - 1} onClick={() => goTo(active + 1)} />
         </div>
       </div>
-      <p className="gift-gallery__status" aria-live="polite">View {active + 1} of {slides.length}: {slides[active].label}</p>
-      <div className="gift-gallery__thumbs" aria-label="Choose a gift view">
-        {slides.map((slide, index) => (
-          <button key={slide.id} type="button" aria-label={`Show ${slide.label}`} aria-pressed={active === index} onClick={() => goTo(index)}>
-            <Doodle kind={slide.doodle} tone={slide.tone} size={34} />
-            <span>{slide.label}</span>
-          </button>
-        ))}
-      </div>
+      <p className="sr-only" aria-live="polite">View {active + 1} of {slides.length}: {slides[active].label}</p>
       <div className="gift-gallery__dots" aria-hidden="true">{slides.map((slide, index) => <span key={slide.id} data-active={active === index || undefined} />)}</div>
     </section>
   );

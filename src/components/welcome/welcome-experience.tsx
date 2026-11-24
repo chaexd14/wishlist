@@ -208,8 +208,8 @@ export function WelcomeExperience({ content }: { content: WelcomeLetterContent }
       {progress.completed && (
         <aside className="welcome-return" aria-label="Welcome back">
           <div>
-            <strong>Welcome back to your birthday journal.</strong>
-            <span>Your saved choices are waiting.</span>
+            <strong>Welcome back to your wish journal.</strong>
+            <span>Your favorite picks are waiting right where you left them.</span>
           </div>
           <div className="welcome-return__actions">
             <JournalButton intent="romantic" onClick={() => router.push("/gifts", { transitionTypes: ["page-peel-forward"] })} seed="continue-wishlist">Continue to my wishlist</JournalButton>
@@ -233,8 +233,8 @@ export function WelcomeExperience({ content }: { content: WelcomeLetterContent }
         </div>
 
         <m.div className="welcome-intro" initial={shouldReduceMotion ? false : { opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.55 }}>
-          <JournalHeading level={1} size="page" id="welcome-title">A little birthday letter</JournalHeading>
-          <p>There is something handmade waiting inside.</p>
+          <JournalHeading level={1} size="page" id="welcome-title">Your wish is my command</JournalHeading>
+          <p>I put together a little surprise just for you.</p>
         </m.div>
 
         <m.div className="welcome-ritual" layout data-step={step} data-transitioning={transitioning ? "true" : "false"}>
@@ -254,7 +254,7 @@ export function WelcomeExperience({ content }: { content: WelcomeLetterContent }
                 <m.article
                   ref={letterRef}
                   className="birthday-letter birthday-letter--physical"
-                  aria-label="Birthday letter"
+                  aria-label="Love letter"
                   aria-hidden={!showLetter || step !== "letter"}
                   tabIndex={showLetter && step === "letter" ? -1 : undefined}
                   variants={letterVariants}
@@ -311,7 +311,7 @@ export function WelcomeExperience({ content }: { content: WelcomeLetterContent }
                   <Doodle kind="heart" tone="tomato" size={46} />
                 </m.div>
                 {stage === "sealed" && (
-                  <m.button className="envelope-open" type="button" onClick={openLetter} aria-label="Open your birthday letter">
+                  <m.button className="envelope-open" type="button" onClick={openLetter} aria-label="Open your letter">
                     <span className="envelope-open__copy">
                       <span className="envelope-open__label">{content.envelopeLabel}</span>
                       <strong className="envelope-open__cta">Press the heart seal to open</strong>
@@ -332,7 +332,7 @@ export function WelcomeExperience({ content }: { content: WelcomeLetterContent }
                 inert={stage === "sealed" ? true : undefined}
               >
                   <JournalButton intent="romantic" onClick={() => moveToStep("note")} seed="letter-next">
-                    Next: leave a note
+                    Next: add a little note
                   </JournalButton>
               </m.div>
             </div>
@@ -353,13 +353,13 @@ export function WelcomeExperience({ content }: { content: WelcomeLetterContent }
           >
             <div>
               <JournalHeading level={2} size="section" id="email-title">A note for later</JournalHeading>
-              <p>If you would like future wishlist updates, leave an email. It is optional and saved only on this device for now.</p>
+              <p>Please enter your email for updates.</p>
             </div>
 
             {progress.email && !editingEmail ? (
               <div className="welcome-email__saved" role="status">
                 <CheckIcon aria-hidden="true" />
-                <div><strong>Email saved on this device</strong><span>{progress.email}</span></div>
+                <div><strong>Got your email!</strong><span>{progress.email}</span></div>
                 <button type="button" onClick={() => setEditingEmail(true)}>Edit</button>
                 <button type="button" onClick={removeEmail}>Remove</button>
               </div>
@@ -375,11 +375,10 @@ export function WelcomeExperience({ content }: { content: WelcomeLetterContent }
                   defaultValue={progress.email}
                   label="Email address"
                   placeholder="you@example.com"
-                  hint="Email updates are not connected yet. This only remembers your address locally."
                   error={emailError || undefined}
                 />
                 <div className="welcome-email__actions">
-                  <JournalButton type="submit" intent="romantic" seed="save-email">Next: reveal my journal</JournalButton>
+                  <JournalButton type="submit" intent="romantic" seed="save-email">Next: peel the seal</JournalButton>
                   <button className="welcome-text-button" type="button" onClick={skipEmail}>Skip for now</button>
                 </div>
               </form>
@@ -388,7 +387,7 @@ export function WelcomeExperience({ content }: { content: WelcomeLetterContent }
             <div className="welcome-panel__navigation">
               <button className="welcome-text-button" type="button" onClick={() => moveToStep("letter")}>Back to letter</button>
               {progress.email && !editingEmail && (
-                <JournalButton intent="romantic" onClick={() => moveToStep("reveal")} seed="continue-email">Next: reveal my journal</JournalButton>
+                <JournalButton intent="romantic" onClick={() => moveToStep("reveal")} seed="continue-email">Next: peel the seal</JournalButton>
               )}
             </div>
           </m.section>
@@ -407,7 +406,7 @@ export function WelcomeExperience({ content }: { content: WelcomeLetterContent }
             onAnimationComplete={() => step === "reveal" && transitioning && finishStepMotion("reveal")}
           >
             <JournalHeading level={2} id="unlock-title">One last little seal</JournalHeading>
-            <p>Peel the sticker—or press it—to open your gift journal.</p>
+            <p>Peel (or tap!) the sticker to see what I picked out for you.</p>
             <m.div
               className="peel-card"
               animate={stage === "peeled" ? "revealed" : "covered"}
@@ -425,7 +424,7 @@ export function WelcomeExperience({ content }: { content: WelcomeLetterContent }
                 initial={false}
                 animate={stage === "peeled" ? { opacity: 1, scale: 1, filter: "blur(0px)" } : { opacity: 0, scale: 0.94, filter: "blur(2px)" }}
                 transition={{ duration: shouldReduceMotion ? 0 : 0.42, delay: shouldReduceMotion ? 0 : 0.2, ease: keepsakeEase }}
-              >Your wishlist is ready</m.span>
+              >Your wish is my command!</m.span>
               <m.button
                 className="peel-sticker"
                 type="button"
@@ -439,7 +438,7 @@ export function WelcomeExperience({ content }: { content: WelcomeLetterContent }
                   completePeel();
                 }}
                 disabled={stage === "peeled"}
-                aria-label="Peel the birthday sticker to reveal the wishlist"
+                aria-label="Peel the sticker to reveal your wishlist"
                 initial={false}
                 animate={stage === "peeled"
                   ? (shouldReduceMotion ? { opacity: 0 } : { x: [drag, 34, 210, 520], y: [0, -10, -24, -42], rotate: [-1, 2, 7, 13], scaleY: [1, 0.94, 0.82, 0.72], opacity: [1, 1, 0.72, 0] })
@@ -482,11 +481,11 @@ export function WelcomeExperience({ content }: { content: WelcomeLetterContent }
           steps={welcomeSteps.map((item) => item.label)}
           current={currentStepIndex}
           orientation="horizontal"
-          label="Birthday journal progress"
+          label="Wish journal progress"
           statusText={{ done: "complete", current: "current step", pending: "not started" }}
         />
         <span className="welcome-live" aria-live="polite">
-          {stage === "reading" && step === "letter" ? "Your birthday letter is open" : `Now showing ${welcomeSteps[currentStepIndex].label}`}
+          {stage === "reading" && step === "letter" ? "Your letter is open" : `Now showing ${welcomeSteps[currentStepIndex].label}`}
         </span>
       </section>
         </div>

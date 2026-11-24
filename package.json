@@ -11,6 +11,12 @@
     "test:welcome": "node tests/e2e/welcome.mjs",
     "test:catalog": "node tests/e2e/catalog.mjs",
     "test:phase-c": "node tests/e2e/phase-c.mjs",
+    "test:phase-d": "node tests/e2e/phase-d.mjs",
+    "test:phase-e": "node tests/e2e/phase-e.mjs",
+    "test:phase-f": "node tests/e2e/phase-f.mjs",
+    "test:phase-g": "node tests/e2e/phase-g.mjs",
+    "test:phase-h": "node tests/e2e/phase-h.mjs",
+    "seed:supabase": "node scripts/seed-supabase.mjs",
     "test:colors": "node tests/color-contrast.mjs",
     "test:colors:e2e": "node tests/e2e/colors.mjs"
   },

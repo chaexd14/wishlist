@@ -2,7 +2,7 @@ import { z } from "zod";
 
 export const CART_KEY = "birthday-wishlist-cart-v1";
 export const CART_CHANGE_EVENT = "birthday-wishlist-cart-change";
-const cartItemSchema = z.object({ id: z.string(), giftId: z.string(), title: z.string(), quantity: z.number().int().positive(), maxQuantity: z.number().int().positive(), availability: z.enum(["available", "limited", "planned"]), selections: z.record(z.string(), z.string()), customizations: z.record(z.string(), z.string()) });
+const cartItemSchema = z.object({ id: z.string(), giftId: z.string(), title: z.string(), imageUrl: z.string().optional(), quantity: z.number().int().positive(), maxQuantity: z.number().int().positive(), availability: z.enum(["available", "limited", "planned"]), selections: z.record(z.string(), z.string()), customizations: z.record(z.string(), z.string()) });
 const cartSchema = z.array(cartItemSchema);
 export type CartItem = z.infer<typeof cartItemSchema>;
 export type CartItemInput = Omit<CartItem, "id">;
@@ -38,4 +38,5 @@ export function updateCartQuantity(id: string, quantity: number) {
   return writeCart(items);
 }
 export function removeCartItem(id: string) { return writeCart(readCart().filter((item) => item.id !== id)); }
+export function clearCart() { return writeCart([]); }
 export function subscribeToCart(onChange: () => void) { window.addEventListener("storage", onChange); window.addEventListener(CART_CHANGE_EVENT, onChange); return () => { window.removeEventListener("storage", onChange); window.removeEventListener(CART_CHANGE_EVENT, onChange); }; }

@@ -123,18 +123,16 @@ The palette is paper-led and celebratory: plum-espresso ink establishes the jour
 
 ### Named Rules
 
-**The Light-Journal Rule.** Every product surface stays on the same light warm-paper canvas with dark plum-espresso ink. Theme choices change the dominant action and focus color while the complete spot-color collection remains available in every mood; there is no dark mode.
+**The Light-Journal Rule.** Every product surface stays on the same light warm-paper canvas with dark plum-espresso ink. Berry pink is the permanent action and focus palette while the complete spot-color collection remains available for accents; there is no theme switcher or dark mode.
 
-### Palette collection
+### Palette
 
 - **Shared foundation:** canvas `#F7EEDB`, sheet `#FFF9EC`, muted paper `#EBDCC5`, ink `#35222E`, secondary ink `#624B55`.
 - **Shared spot colors:** rose `#E9A7B8`, lilac `#C5B3E6`, sky `#A9D8EA`, mint `#A8D5B5`, honey `#F0C85E`, terracotta `#C8684A`.
-- **Warm Confetti:** terracotta action `#A8472F`.
-- **Rose Garden:** berry action `#A63B67`.
-- **Lilac Wishes:** violet action `#68499A`.
-- **Blue Daydream:** ocean action `#2E6F8A`.
+- **Permanent action:** berry pink `#A63B67`.
+- **Permanent focus:** deep berry `#71304D`.
 
-The recipient may change palettes. The choice is stored in a cookie and applied before paint; status colors retain their meaning in every palette.
+The recipient uses one permanent berry-pink journal palette; status colors retain their meaning throughout the experience.
 
 **The Printed-Spot Rule.** Rose, sage, honey, and terracotta communicate purpose in concert with words and icons; color never carries status alone.
 
@@ -216,7 +214,7 @@ Shapes are intentionally imperfect but controlled. PlopUI's sticker, face, and b
 ### Inputs / Fields
 
 - **Style:** Warm cream paper, espresso hand-drawn border, cocoa text, visible external labels, and contextual hint text.
-- **Focus:** Dashed mood-colored focus treatment remains visible against both the canvas and cream sheets.
+- **Focus:** Dashed deep-berry focus treatment remains visible against both the canvas and cream sheets.
 - **Validation:** Recovery copy names the missing detail and the next action. Radios, checkboxes, select, textarea, and number stepper retain conventional semantics.
 
 ### Journal Wrapper
@@ -225,7 +223,7 @@ Shapes are intentionally imperfect but controlled. PlopUI's sticker, face, and b
 
 ### UI Lab
 
-`/design-system` is the product's UI Lab. It documents the approved palette collection, PlopUI button variants, opt-in burst effects, form controls, navigation, feedback, progress, and journal content pieces. Interactive demonstrations are isolated client components; the surrounding catalog stays server rendered.
+`/design-system` is the product's UI Lab. It documents the approved pink-led palette, PlopUI button variants, opt-in burst effects, form controls, navigation, feedback, progress, and journal content pieces. Interactive demonstrations are isolated client components; the surrounding catalog stays server rendered.
 
 ### Welcome ritual
 
@@ -239,13 +237,16 @@ Entering `/gifts` transitions the surface to PlopUI's ruled notebook (`notebook`
 
 Each gift opens as a swipeable four-view paper collage paired with a taped configuration sheet. Touch scrolling and position dots lead on phones; thumbnails and previous/next stickers support larger screens. The phone sequence is gallery, choices, then supporting details, while desktop keeps the choice sheet visible beside the collage. Variant groups, customization, quantity, validation, confirmation, and cart editing reuse the journal wrappers and PlopUI controls. Illustrative media remains clearly labeled and may later be replaced by real image URLs without changing the gallery contract.
 
+### Checkout and submission
+
+Checkout is a review-and-send step, never a payment surface. The client sends only gift identifiers, quantities, option keys, and customization values to the server endpoint. Supabase validates those values against the active catalog and writes the submission plus every item snapshot atomically through `submit_wishlist`. Submitted titles, option labels, customization labels, quantities, and descriptions are immutable; later purchase tracking is stored separately from the recipient's snapshot. When Supabase catalog reads are unavailable, storefront browsing may fall back to the explicitly illustrative typed catalog, but submission never falls back to local-only success.
+
 ### Page & theme transitions
 
 Route and palette changes use the browser's View Transitions API via React `<ViewTransition>` and `transitionTypes`, with all spatial motion stepping down to a calm `150ms` opacity crossfade under `prefers-reduced-motion`:
 
 - **Cutting mat ↔ Notebook (`page-peel-forward` / `page-peel-back`):** Navigating between `/` and `/gifts` runs a diagonal corner sheet peel (`480ms` enter, `420ms` reverse) so the ruled notebook turns cleanly over the cutting mat.
 - **Notebook pages (`page-turn-forward` / `page-turn-back`):** Moving between `/gifts`, `/gifts/[giftId]`, and `/cart` keeps `.storefront-chrome` anchored while turning the notebook sheet underneath (`180ms` exit, `380ms` enter).
-- **Journal mood switch (`data-theme-transition="true"`):** Choosing a palette radiates a `460ms` circular ink-wash sweep from the pressed swatch center.
 
 ## Do's and Don'ts
 

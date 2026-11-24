@@ -1,10 +1,12 @@
 "use client";
 
 import { Doodle } from "@plop-ui/react";
+import Image from "next/image";
 import Link from "next/link";
 import { useMemo, useSyncExternalStore } from "react";
 
 import { JournalButton, JournalButtonLink, JournalHeading, JournalNumberStepper, JournalSheet, JournalTag } from "@/components/journal";
+import { getSampleGift } from "@/data/sample-gifts";
 import { CART_KEY, parseCart, removeCartItem, subscribeToCart, updateCartQuantity } from "@/features/cart/cart";
 
 function getSnapshot() { return localStorage.getItem(CART_KEY) ?? "[]"; }
@@ -17,19 +19,27 @@ export function CartExperience() {
   if (!items.length) return (
     <JournalSheet tape="bubblegum" spacing="roomy" className="cart-empty">
       <Doodle kind="heart" tone="bubblegum" size={92} />
-      <JournalHeading level={1} size="section">Your list has room</JournalHeading>
-      <p>Choose a gift and its details, then it will wait here for you.</p>
-      <JournalButtonLink href="/gifts" transitionTypes={["page-turn-back"]} variant="periwinkle">Browse the gift journal</JournalButtonLink>
+      <JournalHeading level={1} size="section">Your wishlist is waiting for your favorites</JournalHeading>
+      <p>Pick anything that catches your eye and I&apos;ll keep it right here for you.</p>
+      <JournalButtonLink href="/gifts" transitionTypes={["page-turn-back"]} variant="periwinkle">Explore gift ideas</JournalButtonLink>
     </JournalSheet>
   );
 
   return (
     <div className="cart-layout">
       <section className="cart-list" aria-labelledby="cart-title">
-        <div className="cart-list__heading"><JournalHeading id="cart-title" level={1} size="section">My birthday list</JournalHeading><JournalTag tone="bubblegum">{total} selected</JournalTag></div>
-        {items.map((item) => (
+        <div className="cart-list__heading"><JournalHeading id="cart-title" level={1} size="section">My wishlist</JournalHeading><JournalTag tone="bubblegum">{total} selected</JournalTag></div>
+        {items.map((item) => {
+          const itemImage = item.imageUrl ?? getSampleGift(item.giftId)?.gallery[0]?.imageUrl;
+          return (
           <JournalSheet key={item.id} spacing="compact" tape="mint" className="cart-item">
-            <div className="cart-item__mark" aria-hidden="true"><Doodle kind="heart" tone="bubblegum" size={54} /></div>
+            <div className="cart-item__mark" aria-hidden="true">
+              {itemImage ? (
+                <Image className="cart-item__photo" src={itemImage} alt="" fill sizes="96px" unoptimized />
+              ) : (
+                <Doodle kind="heart" tone="bubblegum" size={54} />
+              )}
+            </div>
             <div className="cart-item__copy">
               <h2>{item.title}</h2>
               <dl>{Object.entries(item.selections).map(([label, value]) => <div key={label}><dt>{label}</dt><dd>{value.replaceAll("-", " ")}</dd></div>)}</dl>
@@ -41,13 +51,14 @@ export function CartExperience() {
               <JournalButton intent="quiet" size="sm" onClick={() => removeCartItem(item.id)}>Remove</JournalButton>
             </div>
           </JournalSheet>
-        ))}
+          );
+        })}
       </section>
       <JournalSheet tape="mustard" spacing="comfortable" className="cart-summary">
-        <h2>Your gift note</h2><p>{total} {total === 1 ? "gift" : "gifts"} ready to review.</p>
+        <h2>Ready whenever you are</h2><p>{total} lovely {total === 1 ? "pick" : "picks"} waiting for a final look.</p>
         <JournalButtonLink href="/gifts" transitionTypes={["page-turn-back"]} variant="plain">Keep browsing</JournalButtonLink>
-        <JournalButton disabled aria-describedby="checkout-note">Checkout arrives next</JournalButton>
-        <small id="checkout-note">Your choices are saved on this device. Submission will be connected in Phase D.</small>
+        <JournalButtonLink href="/checkout" transitionTypes={["page-turn-forward"]}>Review and send</JournalButtonLink>
+        <small>No rush at all—you can tweak any color, size, or note anytime before sending.</small>
       </JournalSheet>
     </div>
   );

@@ -38,7 +38,7 @@ import {
 } from "@plop-ui/react";
 import { useState } from "react";
 
-import { JournalButton, JournalHeading, JournalSheet, JournalThemeSwitcher } from "@/components/journal";
+import { JournalButton, JournalHeading, JournalSheet } from "@/components/journal";
 
 const variants: ButtonVariant[] = ["ink", "periwinkle", "mint", "tomato", "mustard", "plain"];
 const bursts: Array<{ style: BurstStyle; label: string; purpose: string }> = [
@@ -65,14 +65,6 @@ export function UiLabPlayground() {
 
   return (
     <>
-      <section className="gallery-section" id="themes" aria-labelledby="themes-title">
-        <div className="gallery-section__heading">
-          <JournalHeading level={2} id="themes-title">Four journal moods</JournalHeading>
-          <p>Every mood shares the same lively color collection and readable paper foundation; only the dominant action color changes.</p>
-        </div>
-        <JournalThemeSwitcher />
-      </section>
-
       <section className="gallery-section" id="buttons" aria-labelledby="buttons-title">
         <div className="gallery-section__heading">
           <JournalHeading level={2} id="buttons-title">Button shelf</JournalHeading>

@@ -13,9 +13,7 @@ export {
 } from "./journal-fields";
 export { JournalHeading } from "./journal-heading";
 export { JournalPageTransition, type JournalTransitionType } from "./journal-page-transition";
-export { DEFAULT_JOURNAL_PALETTE, JOURNAL_PALETTES, isJournalPalette, type JournalPalette } from "./journal-palette";
 export { DEFAULT_JOURNAL_SURFACE, resolveJournalSurface, type JournalSurface } from "./journal-surface";
-export { JournalProvider, useJournalPalette, type ThemeTransitionOrigin } from "./journal-provider";
+export { JournalProvider } from "./journal-provider";
 export { JournalSheet } from "./journal-sheet";
 export { JournalTag } from "./journal-tag";
-export { JournalThemeSwitcher } from "./journal-theme-switcher";

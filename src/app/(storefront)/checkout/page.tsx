@@ -1,9 +1,14 @@
-import { JournalPageTransition } from "@/components/journal";
+import { CheckoutExperience } from "@/components/checkout/checkout-experience";
+import { JournalContainer, JournalPageTransition } from "@/components/journal";
 
 export default function CheckoutPage() {
   return (
     <JournalPageTransition>
-      <main>Checkout review coming soon.</main>
+      <main className="checkout-page">
+        <JournalContainer width="full">
+          <CheckoutExperience />
+        </JournalContainer>
+      </main>
     </JournalPageTransition>
   );
 }

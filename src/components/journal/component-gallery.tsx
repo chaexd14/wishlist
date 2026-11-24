@@ -37,7 +37,6 @@ export function ComponentGallery() {
       </JournalSheet>
 
       <nav className="lab-index" aria-label="UI Lab sections">
-        <a href="#themes">Themes</a>
         <a href="#buttons">Buttons</a>
         <a href="#effects">Effects</a>
         <a href="#forms-title">Forms</a>
