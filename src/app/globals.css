@@ -716,7 +716,7 @@ html:active-view-transition-type(page-peel-back) .storefront-chrome {
 }
 
 .welcome-ritual[data-step="letter"] + .welcome-progress {
-  margin-top: -11rem;
+  margin-top: 0;
 }
 
 .welcome-panel {
@@ -1111,9 +1111,24 @@ html:active-view-transition-type(page-peel-back) .storefront-chrome {
 }
 
 .envelope-scene:is([data-stage="unfolding"], [data-stage="reading"], [data-stage="unlock"], [data-stage="peeled"]) .birthday-letter--physical {
+  top: -7.5rem;
+  bottom: auto;
   z-index: 5;
   opacity: 1;
   transform: translate(-50%, -6%) scale(1) rotate(-0.35deg);
+}
+
+.envelope-scene:is([data-stage="unfolding"], [data-stage="reading"], [data-stage="unlock"], [data-stage="peeled"]) .birthday-letter__panel {
+  min-height: 0;
+  padding: 0.85rem 1.5rem;
+}
+
+.envelope-scene:is([data-stage="unfolding"], [data-stage="reading"], [data-stage="unlock"], [data-stage="peeled"]) .birthday-letter p {
+  width: 100%;
+  max-width: none;
+  margin-bottom: 0.85rem;
+  font-size: 1.15rem;
+  line-height: 1.45;
 }
 
 .birthday-letter p {
@@ -1122,6 +1137,12 @@ html:active-view-transition-type(page-peel-back) .storefront-chrome {
   font-size: clamp(1.05rem, 2vw, 1.3rem);
   line-height: 1.62;
   text-wrap: pretty;
+}
+
+.birthday-letter__panel > p:not(.birthday-letter__salutation, .birthday-letter__signature) {
+  hyphens: auto;
+  text-align: justify;
+  text-justify: inter-word;
 }
 
 .birthday-letter__sample {
@@ -1140,6 +1161,16 @@ html:active-view-transition-type(page-peel-back) .storefront-chrome {
   font-size: inherit;
 }
 
+.birthday-letter__page-number {
+  display: block;
+  margin-bottom: 0.8rem;
+  color: var(--journal-soft-ink);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
 .birthday-letter__salutation,
 .birthday-letter__signature {
   font-family: var(--plop-font-letter);
@@ -1155,9 +1186,13 @@ html:active-view-transition-type(page-peel-back) .storefront-chrome {
 .welcome-letter-continue {
   position: absolute;
   z-index: 9;
-  top: 1rem;
+  top: auto;
   right: 1rem;
+  bottom: 1rem;
   display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
   justify-content: flex-end;
 }
 
@@ -2558,11 +2593,11 @@ textarea.admin-input { resize: vertical; }
   }
 
   .welcome-ritual[data-step="letter"] {
-    min-height: 60rem;
+    min-height: 72rem;
   }
 
   .welcome-ritual[data-step="letter"] + .welcome-progress {
-    margin-top: -10rem;
+    margin-top: 0;
   }
 
   .welcome-intro .journal-heading {
@@ -2584,6 +2619,10 @@ textarea.admin-input { resize: vertical; }
     bottom: 7rem;
   }
 
+  .welcome-panel--letter .envelope-scene {
+    min-height: 70rem;
+  }
+
   .envelope__seal {
     top: 46%;
     width: 64px;
@@ -2600,9 +2639,25 @@ textarea.admin-input { resize: vertical; }
     padding: 0;
   }
 
+  .envelope-scene:is([data-stage="unfolding"], [data-stage="reading"], [data-stage="unlock"], [data-stage="peeled"]) .birthday-letter--physical {
+    top: -41.5rem;
+    bottom: auto;
+  }
+
   .birthday-letter__panel {
     min-height: 9rem;
     padding: 1rem 1.15rem;
+  }
+
+  .envelope-scene:is([data-stage="unfolding"], [data-stage="reading"], [data-stage="unlock"], [data-stage="peeled"]) .birthday-letter__panel {
+    min-height: 0;
+    padding: 0.7rem 0.85rem;
+  }
+
+  .envelope-scene:is([data-stage="unfolding"], [data-stage="reading"], [data-stage="unlock"], [data-stage="peeled"]) .birthday-letter p {
+    margin-bottom: 0.7rem;
+    font-size: 1rem;
+    line-height: 1.42;
   }
 
   .welcome-letter-continue {

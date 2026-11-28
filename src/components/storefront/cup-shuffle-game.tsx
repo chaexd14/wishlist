@@ -239,7 +239,7 @@ export function CupShuffleGame({
       if (slotB >= slotA) slotB += 1;
       const cupA = sim.cups.find((c) => c.slot === slotA)!;
       const cupB = sim.cups.find((c) => c.slot === slotB)!;
-      const speedRamp = Math.max(135, 245 - (14 - sim.swapsLeft) * 9);
+      const speedRamp = Math.max(105, 195 - (14 - sim.swapsLeft) * 8);
       sim.activeSwap = {
         cupA: cupA.id,
         cupB: cupB.id,

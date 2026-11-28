@@ -105,6 +105,7 @@ export function WelcomeExperience({ content }: { content: WelcomeLetterContent }
   const progress = useWelcomeProgress();
   const [stage, setStage] = useState<WelcomeStage>("sealed");
   const [step, setStep] = useState<WelcomeStep>("letter");
+  const [letterPage, setLetterPage] = useState<0 | 1>(0);
   const [transitioning, setTransitioning] = useState(false);
   const [emailError, setEmailError] = useState("");
   const [editingEmail, setEditingEmail] = useState(false);
@@ -118,14 +119,25 @@ export function WelcomeExperience({ content }: { content: WelcomeLetterContent }
 
   function openLetter() {
     writeProgress({ letterOpened: true });
+    setLetterPage(0);
     setStage("reading");
     requestAnimationFrame(() => letterRef.current?.focus({ preventScroll: true }));
   }
 
   function resetLetter() {
     setTransitioning(false);
+    setLetterPage(0);
     setStep("letter");
     setStage("sealed");
+  }
+
+  function showLetterPage(nextPage: 0 | 1) {
+    setLetterPage(nextPage);
+    requestAnimationFrame(() => {
+      if (!letterRef.current) return;
+      letterRef.current.scrollTop = 0;
+      letterRef.current.focus({ preventScroll: true });
+    });
   }
 
   function moveToStep(nextStep: WelcomeStep) {
@@ -200,6 +212,7 @@ export function WelcomeExperience({ content }: { content: WelcomeLetterContent }
 
   const showLetter = stage === "reading" || stage === "peeled";
   const currentStepIndex = welcomeSteps.findIndex((item) => item.id === step);
+  const pageParagraphs = letterPage === 0 ? content.paragraphs.slice(0, 4) : content.paragraphs.slice(4);
 
   return (
     <LazyMotion features={domAnimation} strict>
@@ -267,17 +280,20 @@ export function WelcomeExperience({ content }: { content: WelcomeLetterContent }
                     initial={false}
                     animate={stage === "sealed" ? "folded" : "open"}
                   >
+                    <m.span className="birthday-letter__page-number" variants={copyVariants} custom={shouldReduceMotion ? -1 : 0.74} initial="hidden" animate={stage === "sealed" ? "hidden" : "visible"}>
+                      Page {letterPage + 1} of 2
+                    </m.span>
                     {content.isSample && (
                       <m.div className="birthday-letter__sample" variants={copyVariants} custom={shouldReduceMotion ? -1 : 0.72} initial="hidden" animate={stage === "sealed" ? "hidden" : "visible"}>
                         <JournalTag tone="mustard">Sample copy</JournalTag>
                         <small>Personalize this letter before sharing.</small>
                       </m.div>
                     )}
-                    <m.p className="birthday-letter__salutation" variants={copyVariants} custom={shouldReduceMotion ? -1 : 0.78} initial="hidden" animate={stage === "sealed" ? "hidden" : "visible"}>{content.salutation}</m.p>
-                    {content.paragraphs[0] && <m.p variants={copyVariants} custom={shouldReduceMotion ? -1 : 0.84} initial="hidden" animate={stage === "sealed" ? "hidden" : "visible"}>{content.paragraphs[0]}</m.p>}
+                    {letterPage === 0 && <m.p className="birthday-letter__salutation" variants={copyVariants} custom={shouldReduceMotion ? -1 : 0.78} initial="hidden" animate={stage === "sealed" ? "hidden" : "visible"}>{content.salutation}</m.p>}
+                    {pageParagraphs[0] && <m.p variants={copyVariants} custom={shouldReduceMotion ? -1 : 0.84} initial="hidden" animate={stage === "sealed" ? "hidden" : "visible"}>{pageParagraphs[0]}</m.p>}
                   </m.section>
                   <m.section className="birthday-letter__panel birthday-letter__panel--middle">
-                    {content.paragraphs[1] && <m.p variants={copyVariants} custom={shouldReduceMotion ? -1 : 0.9} initial="hidden" animate={stage === "sealed" ? "hidden" : "visible"}>{content.paragraphs[1]}</m.p>}
+                    {pageParagraphs[1] && <m.p variants={copyVariants} custom={shouldReduceMotion ? -1 : 0.9} initial="hidden" animate={stage === "sealed" ? "hidden" : "visible"}>{pageParagraphs[1]}</m.p>}
                   </m.section>
                   <m.section
                     className="birthday-letter__panel birthday-letter__panel--bottom"
@@ -285,8 +301,8 @@ export function WelcomeExperience({ content }: { content: WelcomeLetterContent }
                     initial={false}
                     animate={stage === "sealed" ? "folded" : "open"}
                   >
-                    {content.paragraphs.slice(2).map((paragraph, index) => <m.p variants={copyVariants} custom={shouldReduceMotion ? -1 : 0.94 + index * 0.04} initial="hidden" animate={stage === "sealed" ? "hidden" : "visible"} key={paragraph}>{paragraph}</m.p>)}
-                    <m.p className="birthday-letter__signature" variants={copyVariants} custom={shouldReduceMotion ? -1 : 1.02} initial="hidden" animate={stage === "sealed" ? "hidden" : "visible"}>{content.signature}</m.p>
+                    {pageParagraphs.slice(2).map((paragraph, index) => <m.p variants={copyVariants} custom={shouldReduceMotion ? -1 : 0.94 + index * 0.04} initial="hidden" animate={stage === "sealed" ? "hidden" : "visible"} key={`${letterPage}-${paragraph}`}>{paragraph}</m.p>)}
+                    {letterPage === 1 && <m.p className="birthday-letter__signature" variants={copyVariants} custom={shouldReduceMotion ? -1 : 1.02} initial="hidden" animate={stage === "sealed" ? "hidden" : "visible"}>{content.signature}</m.p>}
                   </m.section>
                 </m.article>
                 <div className="envelope__front" aria-hidden="true" />
@@ -331,9 +347,18 @@ export function WelcomeExperience({ content }: { content: WelcomeLetterContent }
                 aria-hidden={stage === "sealed"}
                 inert={stage === "sealed" ? true : undefined}
               >
-                  <JournalButton intent="romantic" onClick={() => moveToStep("note")} seed="letter-next">
-                    Next: add a little note
-                  </JournalButton>
+                  {letterPage === 0 ? (
+                    <JournalButton intent="romantic" onClick={() => showLetterPage(1)} seed="letter-page-next">
+                      Next page
+                    </JournalButton>
+                  ) : (
+                    <>
+                      <button className="welcome-text-button" type="button" onClick={() => showLetterPage(0)}>Previous page</button>
+                      <JournalButton intent="romantic" onClick={() => moveToStep("note")} seed="letter-next">
+                        Next: add a little note
+                      </JournalButton>
+                    </>
+                  )}
               </m.div>
             </div>
           </m.section>
